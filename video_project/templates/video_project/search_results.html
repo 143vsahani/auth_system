@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+        video {
+            display: block;
+            max-width: 100%;
+            margin: 0 auto 20px auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .list-group-item {
+            margin-bottom: 10px;
+        }
+        .list-group-item a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        .list-group-item a:hover {
+            text-decoration: underline;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 16px;
+            color: #007bff;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Search Results for "{{ query }}" in "{{ video.title }}"</h1>
+        
+        <video id="videoPlayer" class="img-fluid" controls>
+            <source src="{{ video.video_file.url }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <ul class="list-group">
+            {% for timestamp in timestamps %}
+                <li class="list-group-item">
+                    <a href="javascript:void(0);" onclick="jumpToTime('{{ timestamp.start_time }}')">
+                        {{ timestamp.start_time }} - {{ timestamp.line }}
+                    </a>
+                </li>
+            {% empty %}
+                <li class="list-group-item">No results found.</li>
+            {% endfor %}
+        </ul>
+
+        <a href="{% url 'list_videos' %}" class="back-link d-block text-center">Back to Video List</a>
+    </div>
+
+    <!-- Bootstrap JS and depen
