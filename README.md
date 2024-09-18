@@ -25,8 +25,8 @@ source venv/bin/activate
 pip install django
 
 # Create a Django project
-django-admin startproject myproject
-cd myproject
+django-admin startproject auth_system
+cd auth_system
 
 # Start an application for the auth system
 python manage.py startapp auth_system
