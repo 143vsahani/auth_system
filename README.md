@@ -29,6 +29,10 @@ django-admin startproject auth_system
 cd auth_system
 
 # Start an application for the auth system
-python manage.py startapp auth_system
+python manage.py runserver
+
+#In local browser
+http://localhost:8000/accounts/home/
+http://localhost:8000/accounts/register/
 
  
