@@ -90,6 +90,11 @@
         </form>
 
         <a href="{% url 'list_videos' %}" class="back-link">Back to Video List</a>
+        <!-- Logout Button (Visible if user is authenticated) -->
+        {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}" class="btn btn-danger mt-3 ml-2">Logout</a>
+        {% endif %}
+
     </div>
 </body>
 </html>
